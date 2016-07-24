@@ -1,5 +1,5 @@
-
-marathon.update_recipe("alumina",
+require 'stdlib/data/recipe'
+Recipe.sel"alumina",
 {
 	energy_required = 6,
 	result_count = 6,
