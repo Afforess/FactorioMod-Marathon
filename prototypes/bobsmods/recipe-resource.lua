@@ -1,46 +1,24 @@
-marathon.update_recipe("bob-resin-oil",
+Recipe.select("bob-resin-oil").apply('energy_required', 2.5).ingredients =
 {
-	energy_required = 2.5,
-	ingredients = {
-		{type="fluid", name="heavy-oil", amount=3}
-	}
-})
+	{type="fluid", name="heavy-oil", amount=3}
+}
 
-marathon.update_recipe("bob-resin-wood",
-{
-	energy_required = 5
-})
+Recipe.select("bob-resin-wood").energy_required = 5
 
-marathon.update_recipe("bob-rubber",
+Recipe.select("bob-rubber").apply('energy_required', 7).ingredients =
 {
-	energy_required = 7,
-	ingredients = {
-		{type="item", name="resin", amount=3}
-	}
-})
+	{type="item", name="resin", amount=3}
+}
 
-marathon.update_recipe("empty-canister",
+Recipe.select("empty-canister").result_count = 1
+Recipe.select("gas-canister").apply('energy_required', 2).ingredients =
 {
-	result_count = 1
-})
+	{"steel-plate", 3},
+}
 
-marathon.update_recipe("gas-canister",
-{
-	energy_required = 2,
-	ingredients = {
-		{"steel-plate", 3},
-	}
-})
+Recipe.select("silicon-wafer").result_count = 6
 
-marathon.update_recipe("silicon-wafer",
+Recipe.select("solid-fuel-from-hydrogen").apply('energy_required', 5).ingredients =
 {
-	result_count = 6
-})
-
-marathon.update_recipe("solid-fuel-from-hydrogen",
-{
-	energy_required = 5,
-	ingredients = {
-		{type="fluid", name="hydrogen", amount=75}
-	}
-})
+	{type="fluid", name="hydrogen", amount=75}
+}

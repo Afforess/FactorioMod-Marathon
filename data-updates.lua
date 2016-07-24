@@ -1,5 +1,5 @@
+require 'stdlib/data/recipe'
 
-log(serpent.dump(data.raw['recipe']))
 function marathon.update_recipe(name, values)
 	local recipe = data.raw.recipe[name]
 	if recipe then
@@ -110,4 +110,25 @@ if bobmods and bobmods.config then
 	require("prototypes.bobsmods.recipe-resource")
 	require("prototypes.bobsmods.recipe-smelting")
 	require("prototypes.bobsmods.recipe-turret")
+end
+
+function Recipe.validate(recipes)
+    recipes = recipes or data.raw.recipe
+    table.each(Recipe.format_items(recipes), function(recipe, recipe_name)
+        if recipe.ingredients and type(recipe.ingredients) == 'table' then
+            table.each(recipe.ingredients, function(ingredient)
+                if not (data.raw.item[ingredient.name] or data.raw.fluid[ingredient.name] or data.raw.module[ingredient.name]) then
+                    log("Recipe [" .. recipe.name .. "] has an invalid ingredient, no item named [" .. ingredient.name .. "] was found.")
+                end
+            end)
+        end
+        if recipe.results and type(recipe.results) == 'table' then
+            table.each(recipe.results, function(item)
+                if not (data.raw.item[item.name] or data.raw.item[item.name] or data.raw.module[item.name]) then
+                    log("Recipe [" .. recipe.name .. "] has an invalid result, no item named [" .. item.name .. "] was found.")
+                end
+            end)
+        end
+    end)
+    return recipes
 end

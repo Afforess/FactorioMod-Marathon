@@ -1,121 +1,73 @@
-marathon.update_recipe("boiler-2",
+Recipe.select("boiler-2").ingredients =
 {
-	ingredients = {
-		{type="item", name="boiler", amount=1},
-		{type="item", name="steel-furnace", amount=2},
-	}
-})
+	{type="item", name="boiler", amount=1},
+	{type="item", name="steel-furnace", amount=2},
+}
 
-marathon.update_recipe("boiler-3",
+Recipe.select("boiler-3").ingredients =
 {
-	ingredients = {
-		{type="item", name="boiler-2", amount=1},
-		{type="item", name="steel-plate", amount=15},
-	}
-})
+	{type="item", name="boiler-2", amount=1},
+	{type="item", name="steel-plate", amount=15},
+}
 
-marathon.update_recipe("boiler-4",
+Recipe.select("boiler-4").ingredients =
 {
-	ingredients = {
-		{type="item", name="boiler-3", amount=1},
-		{type="item", name="steel-plate", amount=15},
-	}
-})
+	{type="item", name="boiler-3", amount=1},
+	{type="item", name="steel-plate", amount=15},
+}
 
-marathon.update_recipe("fast-accumulator",
+Recipe.select("fast-accumulator").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="iron-plate", amount=10},
-		{type="item", name="electronic-circuit", amount=6},
-		{type="item", name="battery", amount=8},
-	}
-})
+	{type="item", name="iron-plate", amount=10},
+	{type="item", name="electronic-circuit", amount=6},
+	{type="item", name="battery", amount=8},
+}
 
-marathon.update_recipe("fast-accumulator-2",
+Recipe.select("fast-accumulator-2").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="fast-accumulator", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="advanced-circuit", amount=12},
-		{type="item", name="battery", amount=8},
-	}
-})
+	{type="item", name="fast-accumulator", amount=1},
+	{type="item", name="steel-plate", amount=10},
+	{type="item", name="advanced-circuit", amount=12},
+	{type="item", name="battery", amount=8},
+}
 
-marathon.update_recipe("fast-accumulator-3",
+Recipe.select("fast-accumulator-3").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="fast-accumulator-2", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="processing-unit", amount=12},
-		{type="item", name="battery", amount=8},
-	}
-})
+	{type="item", name="fast-accumulator-2", amount=1},
+	{type="item", name="steel-plate", amount=10},
+	{type="item", name="processing-unit", amount=12},
+	{type="item", name="battery", amount=8},
+}
 
-marathon.update_recipe("large-accumulator",
+Recipe.select("large-accumulator").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="iron-plate", amount=15},
-		{type="item", name="battery", amount=20},
-	}
-})
+	{type="item", name="iron-plate", amount=15},
+	{type="item", name="battery", amount=20},
+}
 
-marathon.update_recipe("large-accumulator-2",
+Recipe.select("large-accumulator-2").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="large-accumulator", amount=1},
-		{type="item", name="steel-plate", amount=15},
-		{type="item", name="advanced-circuit", amount=6},
-		{type="item", name="battery", amount=20},
-	}
-})
+	{type="item", name="large-accumulator", amount=1},
+	{type="item", name="steel-plate", amount=15},
+	{type="item", name="advanced-circuit", amount=6},
+	{type="item", name="battery", amount=20},
+}
 
-marathon.update_recipe("large-accumulator-3",
+Recipe.select("large-accumulator-3").apply('energy_required', 20).ingredients =
 {
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="large-accumulator-2", amount=1},
-		{type="item", name="steel-plate", amount=15},
-		{type="item", name="processing-unit", amount=6},
-		{type="item", name="battery", amount=20},
-	}
-})
+	{type="item", name="large-accumulator-2", amount=1},
+	{type="item", name="steel-plate", amount=15},
+	{type="item", name="processing-unit", amount=6},
+	{type="item", name="battery", amount=20},
+}
 
-marathon.update_recipe("slow-accumulator",
-{
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="iron-plate", amount=10},
-		{type="item", name="electronic-circuit", amount=6},
-		{type="item", name="battery", amount=8},
-	}
-})
-
-marathon.update_recipe("slow-accumulator-2",
-{
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="slow-accumulator", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="advanced-circuit", amount=12},
-		{type="item", name="battery", amount=8},
-	}
-})
-
-marathon.update_recipe("slow-accumulator-3",
-{
-	energy_required = 20,
-	ingredients = {
-		{type="item", name="slow-accumulator-2", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="processing-unit", amount=12},
-		{type="item", name="battery", amount=8},
-	}
-})
+Recipe.select("slow-accumulator.*").apply('energy_required', 20)
+Recipe.select("slow-accumulator.*:ingredients:iron-plate").amount = 10
+Recipe.select("slow-accumulator.*:ingredients:steel-plate").amount = 10
+Recipe.select("slow-accumulator.*:ingredients:electronic-circuit").amount = 6
+Recipe.select("slow-accumulator.*:ingredients:advanced-circuit").amount = 12
+Recipe.select("slow-accumulator.*:ingredients:processing-unit").amount = 12
+Recipe.select("slow-accumulator.*:ingredients:battery").amount = 8
 
 marathon.update_recipe("solar-panel",
 {

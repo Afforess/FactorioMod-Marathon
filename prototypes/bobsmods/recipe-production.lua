@@ -1,38 +1,31 @@
-marathon.update_recipe("air-pump",
+Recipe.select('air-pump').apply('energy_required', 5).ingredients =
 {
-	energy_required = 5,
-	ingredients = {
-		{type="item", name="iron-plate", amount=10},
-		{type="item", name="iron-gear-wheel", amount=10},
-		{type="item", name="electronic-circuit", amount=10},
-		{type="item", name="pipe", amount=10},
-	}
-})
+	{type="item", name="iron-plate", amount=10},
+	{type="item", name="iron-gear-wheel", amount=10},
+	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="pipe", amount=10},
+}
 
-marathon.update_recipe("air-pump-2",
+Recipe.select('air-pump-2').ingredients =
 {
-	ingredients = {
-		{type="item", name="air-pump", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="steel-gear-wheel", amount=10},
-		{type="item", name="advanced-circuit", amount=8},
-		{type="item", name="pipe", amount=6},
-	}
-})
+	{type="item", name="air-pump", amount=1},
+	{type="item", name="steel-plate", amount=10},
+	{type="item", name="steel-gear-wheel", amount=10},
+	{type="item", name="advanced-circuit", amount=8},
+	{type="item", name="pipe", amount=6},
+}
 
-marathon.update_recipe("chemical-plant",
+Recipe.select('chemical-plant').ingredients =
 {
-	ingredients = {
-		{type="item", name="steel-plate", amount=20},
-		{type="item", name="iron-gear-wheel", amount=30},
-		{type="item", name="electronic-circuit", amount=10},
-		{type="item", name="pipe", amount=15},
-	}
-})
+	{type="item", name="steel-plate", amount=20},
+	{type="item", name="iron-gear-wheel", amount=30},
+	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="pipe", amount=15},
+}
 
-marathon.update_recipe("chemical-plant-2",
-{
-	ingredients = {
+if data.raw.item['steel-bearing'] and data.raw.item['steel-gear-wheel'] and data.raw.item['glass'] then
+	Recipe.select('chemical-plant-2:ingredients:steel-plate')
+	{
 		{type="item", name="chemical-plant", amount=1},
 		{type="item", name="glass", amount=15},
 		{type="item", name="steel-bearing", amount=30},
@@ -40,83 +33,72 @@ marathon.update_recipe("chemical-plant-2",
 		{type="item", name="advanced-circuit", amount=8},
 		{type="item", name="pipe", amount=10},
 	}
-})
+end
 
-marathon.update_recipe("electrolyser",
+Recipe.select('electrolyser').ingredients =
 {
-	ingredients = {
-		{type="item", name="stone-brick", amount=10},
-		{type="item", name="electronic-circuit", amount=10},
-		{type="item", name="pipe", amount=15},
-	}
-})
+	{type="item", name="stone-brick", amount=10},
+	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="pipe", amount=15},
+}
 
-marathon.update_recipe("electrolyser-2",
+Recipe.select('electrolyser-2').ingredients =
 {
-	ingredients = {
-		{type="item", name="electrolyser", amount=1},
-		{type="item", name="glass", amount=15},
-		{type="item", name="steel-plate", amount=30},
-		{type="item", name="advanced-circuit", amount=8},
-		{type="item", name="pipe", amount=10},
-	}
-})
+	{type="item", name="electrolyser", amount=1},
+	{type="item", name="glass", amount=15},
+	{type="item", name="steel-plate", amount=30},
+	{type="item", name="advanced-circuit", amount=8},
+	{type="item", name="pipe", amount=10},
+}
 
-marathon.update_recipe("water-pump",
+Recipe.select('water-pump').apply('energy_required', 7).ingredients =
 {
-	energy_required = 7,
-	ingredients = {
-		{type="item", name="iron-plate", amount=10},
-		{type="item", name="iron-gear-wheel", amount=15},
-		{type="item", name="electronic-circuit", amount=10},
-		{type="item", name="pipe", amount=20},
-	}
-})
+	{type="item", name="iron-plate", amount=10},
+	{type="item", name="iron-gear-wheel", amount=15},
+	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="pipe", amount=20},
+}
 
-marathon.update_recipe("water-pump-2",
+Recipe.select('water-pump-2').ingredients =
 {
-	ingredients = {
-		{type="item", name="water-pump", amount=1},
-		{type="item", name="steel-plate", amount=10},
-		{type="item", name="steel-gear-wheel", amount=10},
-		{type="item", name="advanced-circuit", amount=8},
-		{type="item", name="pipe", amount=15},
-	}
-})
+	{type="item", name="water-pump", amount=1},
+	{type="item", name="steel-plate", amount=10},
+	{type="item", name="steel-gear-wheel", amount=10},
+	{type="item", name="advanced-circuit", amount=8},
+	{type="item", name="pipe", amount=15},
+}
 
-marathon.update_recipe("void-pump",
+Recipe.select('void-pump').ingredients =
 {
-	ingredients = {
-		{type="item", name="iron-plate", amount=10},
-		{type="item", name="iron-gear-wheel", amount=15},
-		{type="item", name="electronic-circuit", amount=10},
-		{type="item", name="pipe", amount=10},
-	}
-})
+	{type="item", name="iron-plate", amount=10},
+	{type="item", name="iron-gear-wheel", amount=15},
+	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="pipe", amount=10},
+}
 
 if data.raw.item["basic-circuit-board"] then
-	marathon.replace_recipe_item("electrolyser", "electronic-circuit", "basic-circuit-board")
+	Recipe.select('electrolyser:ingredients:electronic-circuit').name = 'basic-circuit-board'
 end
 
 if data.raw.item["steel-pipe"] then
-	marathon.replace_recipe_item("chemical-plant-2", "pipe", "steel-pipe")
+	Recipe.select('chemical-plant-2:ingredients:pipe').name = 'steel-pipe'
 end
 
 if data.raw.item["stone-pipe"] then
-	marathon.replace_recipe_item("electrolyser", "pipe", "stone-pipe")
+	Recipe.select('electrolyser:ingredients:pipe').name = 'stone-pipe'
 end
 
 if data.raw.item["plastic-pipe"] then
-	marathon.replace_recipe_item("electrolyser-2", "pipe", "plastic-pipe")
+	Recipe.select('electrolyser-2:ingredients:pipe').name = 'plastic-pipe'
 end
 
 if data.raw.item["copper-pipe"] then
-	marathon.replace_recipe_item("air-pump", "pipe", "copper-pipe")
-	marathon.replace_recipe_item("water-pump", "pipe", "copper-pipe")
-	marathon.replace_recipe_item("void-pump", "pipe", "copper-pipe")
+	Recipe.select('air-pump:ingredients:pipe').name = 'copper-pipe'
+	Recipe.select('water-pump:ingredients:pipe').name = 'copper-pipe'
+	Recipe.select('void-pump:ingredients:pipe').name = 'copper-pipe'
 end
 
 if data.raw.item["bronze-pipe"] then
-	marathon.replace_recipe_item("air-pump-2", "pipe", "bronze-pipe")
-	marathon.replace_recipe_item("water-pump-2", "pipe", "bronze-pipe")
+	Recipe.select('air-pump-2:ingredients:pipe').name = 'bronze-pipe'
+	Recipe.select('water-pump-2:ingredients:pipe').name = 'bronze-pipe'
 end
