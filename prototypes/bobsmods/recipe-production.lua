@@ -24,7 +24,7 @@ Recipe.select('chemical-plant').ingredients =
 }
 
 if data.raw.item['steel-bearing'] and data.raw.item['steel-gear-wheel'] and data.raw.item['glass'] then
-	Recipe.select('chemical-plant-2:ingredients:steel-plate').ingredients =
+	Recipe.select('chemical-plant-2').ingredients =
 	{
 		{type="item", name="chemical-plant", amount=1},
 		{type="item", name="glass", amount=15},
