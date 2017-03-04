@@ -1,141 +1,30 @@
-if data.raw.item["brass-alloy"] then
-	marathon.update_recipe("brass-gear-wheel",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="brass-alloy", amount=5}
-		}
-	})
-end
+local cat2items = marathomaton.get_items_from_category
+local subgroup2items = marathomaton.get_items_by_subgroup
+local i2r = marathomaton.get_recipes_from_item
+local multiply = marathomaton.multiply
 
-if data.raw.item["silicon-nitride"] then
-	marathon.update_recipe("ceramic-bearing",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="silicon-nitride", amount=3},
-			{type="item", name="ceramic-bearing-ball", amount=42},
-		  	{type="fluid", name="lubricant", amount=3}
-		}
-	})
 
-	marathon.update_recipe("ceramic-bearing-ball",
-	{
-		result_count = 8
-	})
-end
+-- 2x times and inputs
+-- note that T1 battey is only 1.5x
+local battery = {"lithium-ion-battery", "silver-zinc-battery"}
+multiply({'__time__', '__inputs__'}, 2.0, i2r(battery))
 
-marathon.update_recipe("cobalt-oxide-from-copper",
-{
-	energy_required = 37.5,
-	ingredients = {
-		{type = "item", name = "copper-ore", amount = 7},
-		{type = "item", name = "stone", amount = 2},
-		{type = "item", name = "coal", amount = 2},
-		{type = "fluid", name = "hydrogen", amount = 2},
-	},
-	results=
-	{
-		{type = "item", name = "copper-plate", amount = 50},
-		{type = "item", name = "cobalt-oxide", amount = 2},
-	},
-})
+-- result count to 8 from 12
+local bball = {"nitinol-bearing-ball", "titanium-bearing-ball", "steel-bearing-ball", "ceramic-bearing-ball"}
+multiply('__yield__' , 0.6666666, i2r(bball))
 
-marathon.update_recipe("lithium-ion-battery",
-{
-	energy_required = 1.5,
-	ingredients = {
-		{type="item", name="lithium-perchlorate", amount=4},
-		{type="item", name="lithium-cobalt-oxide", amount=2},
-		{type="item", name="carbon", amount=2},
-		{type="item", name="plastic-bar", amount=2},
-	}
-})
+--  3x times and inputs
+local bearing = { "ceramic-bearing", "steel-bearing", "titanium-bearing", "nitinol-bearing"}
+multiply({'__time__', '__inputs__'}, 3.0, i2r(bearing))
 
-if data.raw.item["nitinol-alloy"] then
+-- 3x times of all gear wheels (alloy expansion happens in recipe-smelting)
+local gear = { "brass-gear-wheel", "nitinol-gear-wheel", "steel-gear-wheel", "titanium-gear-wheel", "tungsten-gear-wheel" }
+multiply('__time__', 3.0 , i2r(gear))
 
-	marathon.update_recipe("nitinol-bearing",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="nitinol-alloy", amount=3},
-			{type="item", name="nitinol-bearing-ball", amount=42},
-		  	{type="fluid", name="lubricant", amount=2}
-		}
-	})
+-- ignore this one -- bob isnt using it anymore
+-- "cobalt-oxide-from-copper"
 
-	marathon.update_recipe("nitinol-bearing-ball",
-	{
-		result_count = 8
-	})
+-- handle flying robot frames 2-4: 3.5x inputs
+local frf = {"flying-robot-frame-2", "flying-robot-frame-3", "flying-robot-frame-4"}
+multiply('__inputs__', 3.5, i2r(frf))
 
-	marathon.update_recipe("nitinol-gear-wheel",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="nitinol-alloy", amount=5},
-		}
-	})
-end
-
-marathon.update_recipe("silver-zinc-battery",
-{
-	energy_required = 3
-})
-
-marathon.update_recipe("steel-bearing",
-{
-	energy_required = 1.5,
-	ingredients = {
-		{type="item", name="steel-plate", amount=3},
-		{type="item", name="steel-bearing-ball", amount=42},
-	}
-})
-
-marathon.update_recipe("steel-bearing-ball",
-{
-	result_count = 8
-})
-
-marathon.update_recipe("steel-gear-wheel",
-{
-	energy_required = 1.5,
-	ingredients = {
-		{type="item", name="steel-plate", amount=5},
-	}
-})
-
-if data.raw.item["titanium-plate"] then
-	marathon.update_recipe("titanium-bearing",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="titanium-plate", amount=3},
-			{type="item", name="titanium-bearing-ball", amount=42},
-		  	{type="fluid", name="lubricant", amount=2}
-		}
-	})
-
-	marathon.update_recipe("titanium-bearing-ball",
-	{
-		result_count = 8
-	})
-
-	marathon.update_recipe("titanium-gear-wheel",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="titanium-plate", amount=5},
-		}
-	})
-end
-
-if data.raw.item["tungsten-plate"] then
-	marathon.update_recipe("tungsten-gear-wheel",
-	{
-		energy_required = 1.5,
-		ingredients = {
-			{type="item", name="tungsten-plate", amount=5},
-		}
-	})
-end

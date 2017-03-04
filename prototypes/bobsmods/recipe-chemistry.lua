@@ -1,4 +1,10 @@
+-- ignore everything here
 
+
+
+-- 3x energy, 6x yield, 10x sodium-hydroxide and 2x ore
+-- in chemical furnace
+-- this is like aluminum plate???
 marathon.update_recipe("alumina",
 {
 	energy_required = 6,
@@ -9,6 +15,7 @@ marathon.update_recipe("alumina",
 	}
 })
 
+-- deprecated by existing battery update
 if bobmods.config.plates.BatteryUpdate and data.raw.item["lead-plate"] and data.raw.item["sulfuric-acid"] then
 	marathon.update_recipe("battery",
 	{
@@ -20,6 +27,7 @@ if bobmods.config.plates.BatteryUpdate and data.raw.item["lead-plate"] and data.
 	})
 end
 
+-- deprecated
 marathon.update_recipe("coal-cracking",
 {
 	energy_required = 6,
@@ -32,6 +40,7 @@ marathon.update_recipe("coal-cracking",
 	}
 })
 
+-- 2x time, 0.6x yield
 marathon.update_recipe("ferric-chloride-solution",
 {
 	energy_required = 5,
@@ -40,6 +49,7 @@ marathon.update_recipe("ferric-chloride-solution",
 	}
 })
 
+-- 3x time and 3x inputs
 marathon.update_recipe("liquid-fuel",
 {
 	energy_required = 3,
@@ -48,6 +58,7 @@ marathon.update_recipe("liquid-fuel",
 	}
 })
 
+-- 4x time and 2x inputs
 marathon.update_recipe("lithium-chloride",
 {
 	energy_required = 2,
@@ -56,11 +67,13 @@ marathon.update_recipe("lithium-chloride",
 	}
 })
 
+-- 1.5x time
 marathon.update_recipe("sulfur-2",
 {
 	energy_required = 1.5
 })
 
+-- 5x time, or equivalently, .2x yield and .2x inputs
 marathon.update_recipe("sulfuric-acid-2",
 {
 	ingredients = {

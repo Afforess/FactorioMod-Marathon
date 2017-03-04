@@ -1,12 +1,12 @@
 {
-  "name": "marathon",
-  "version": "1.1.6",
+  "name": "marathomaton",
+  "version": "0.1.13",
   "factorio_version": "0.14",
-  "title": "Marathon Mod",
+  "title": "Marathon Mod Automated",
   "author": "Benoit Girard & Afforess",
-  "contributors": ["Wulfson", "KeepOnDigging", "gheift"],
-  "homepage": "http://www.factorioforums.com/forum/viewtopic.php?f=91&t=13567",
-  "description": "Increases the resource costs of most recipes causing a marathon game. The will require the players to scale a larger factory and use rail to reach the end game.",
+  "contributors": ["Wulfson", "KeepOnDigging", "gheift", "boweiliu"],
+  "homepage": "",
+  "description": "Automatically increases the resource costs of most recipes causing a marathon game. The will require the players to scale a larger factory and use rail to reach the end game. WARNING: Incompatible with marathon mod.",
   "dependencies": [
     "base >= 0.14.0",
     "? bobassembly >= 0.12.7",
@@ -21,6 +21,7 @@
     "? bobplates >= 0.12.10",
     "? bobpower >= 0.12.6",
     "? bobtech >= 0.12.4",
-    "? bobwarfare >= 0.12.9"
+    "? bobwarfare >= 0.12.9",
+    "? marathon < 0.0.1"
     ]
 }
